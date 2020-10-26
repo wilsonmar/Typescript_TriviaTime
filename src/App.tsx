@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { fetchQuizQuestions, QuestionState } from './API'
 import QuestionCard from './components/QuestionCard'
 import LoadingSpinner from './components/LoadingSpinner'
-import StartGame from './components/StartGame';
-import GameOver from './components/GameOver';
+import StartGame from './components/StartGame'
+import GameOver from './components/GameOver'
+import "./App.css"
 
 const TOTAL_QUESTIONS = 10
 
 export type AnswerObject = {
+  questionNum: number,
   question: string
   answer: string
   correct: boolean
@@ -23,6 +25,7 @@ const App = () => {
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
   const [initialize, setStart] = useState(true)
+  const questionNum = questions[number]
 
   const startTrivia = async (difficulty: string, topic: string) => {
     setLoading(true)
@@ -41,48 +44,52 @@ const App = () => {
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
       const answer = e.currentTarget.value
-      const correct = questions[number].correct_answer === answer
+      const correct = questionNum.correct_answer === answer
 
-      if (correct) setScore(prev => prev + 1)
       const AnswerObject = {
-        question: questions[number].question,
+        questionNum: number,
+        question: questionNum.question,
         answer,
         correct,
-        correctAnswer: questions[number].correct_answer
+        correctAnswer: questionNum.correct_answer
       }
-
+      console.log(userAnswers)
       setUserAnswers(prev => [...prev, AnswerObject])
+
+      if (correct) {
+        setScore(prev => prev + 1)
+      }
     }
   }
 
-  const nextQuestion = () => {
-    const nexQuestion = number + 1
+  const loadNextQuestion = () => {
+    const nextQuestion = number + 1
 
-    if (nexQuestion === TOTAL_QUESTIONS) setGameOver(true)
-    else { setNumber(nexQuestion) }
+    if (nextQuestion === TOTAL_QUESTIONS) setGameOver(true)
+    else { setNumber(nextQuestion) }
   }
 
   const restartGame = () => setStart(true)
 
   return (
-    <div className="App">
-      <h1>React Quiz</h1>
+    <div className="container">
+      <div className='title'>TRIVIA FUN</div>
       {loading && <LoadingSpinner />}
+      {initialize && <StartGame callback={startTrivia} />}
       {gameOver && !initialize &&
         <>
           <GameOver score={score} />
           <button onClick={restartGame}>Restart?</button>
         </>
       }
-      {initialize && <StartGame callback={startTrivia} />}
       {
         !loading && !gameOver && !initialize
         && <p className='score'>Score: {score}</p>
         && <QuestionCard
           questionNum={number + 1}
           totalQuestions={TOTAL_QUESTIONS}
-          question={questions[number].question}
-          answers={questions[number].answers}
+          question={questionNum.question}
+          answers={questionNum.answers}
           userAnswer={userAnswers ? userAnswers[number] : undefined}
           callback={checkAnswer}
         />
@@ -91,7 +98,7 @@ const App = () => {
         !gameOver &&
         !loading &&
         userAnswers.length === number + 1 &&
-        < button className='next' onClick={nextQuestion}>
+        < button className='start' onClick={loadNextQuestion}>
           {number !== TOTAL_QUESTIONS - 1 ?
             `Next Question` :
             `Finish`}
@@ -101,4 +108,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App

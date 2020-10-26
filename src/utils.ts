@@ -18,8 +18,8 @@ export const triviaTopic = [
   { "id": 15, "name": "Video Games" },
   { "id": 16, "name": "Board Games" },
   { "id": 17, "name": "Science & Nature" },
-  { "id": 18, "name": "Science: Computers" },
-  { "id": 19, "name": "Science: Mathematics" },
+  { "id": 18, "name": "Computers" },
+  { "id": 19, "name": "Mathematics" },
   { "id": 20, "name": "Mythology" },
   { "id": 21, "name": "Sports" },
   { "id": 22, "name": "Geography" },
@@ -30,7 +30,7 @@ export const triviaTopic = [
   { "id": 27, "name": "Animals" },
   { "id": 28, "name": "Vehicles" },
   { "id": 29, "name": "Comics" },
-  { "id": 30, "name": "Science: Gadgets" },
+  { "id": 30, "name": "Gadgets" },
   { "id": 31, "name": "Anime & Manga" },
   { "id": 32, "name": "Cartoon & Animations" }
 ]

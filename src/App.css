@@ -1,0 +1,70 @@
+body .container{
+    font-family: 'Montserrat', sans-serif !important;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: rgb(32, 29, 29);
+    color: white;
+}
+
+body{
+    margin: 0px;
+}
+
+.app {
+    display: block;
+    margin: auto;
+    text-align: center;
+margin-top: 40px;
+}
+
+.MuiInputBase-input{
+    width: 155px !important;
+    font-size: 17px !important;
+}
+
+
+.title{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, rgba(20,163,216,1) 0%, rgba(150,208,62,1) 61%, rgba(244,192,20,1) 100%);    color: white;
+    font-size: 343%;
+    line-height: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+ }
+ 
+ .start{
+     margin-top: 25px;
+cursor: pointer;
+position: relative;
+z-index: 3;
+background: transparent;
+color: rgb(130, 187, 44);
+font-size: 14px;
+border-color:  rgb(130, 187, 44);
+border-style: solid;
+border-width: 2px;
+border-radius: 22px;
+padding: 10px 40px;
+text-transform: uppercase;
+text-decoration: none;
+font-weight: bold;
+}    
+
+.start:hover {
+color: white;
+background: linear-gradient(90deg, rgba(20,163,216,1) 0%, rgba(150,208,62,1) 61%, rgba(244,192,20,1) 100%);    color: white;
+border-color: white;   
+color: white;
+}
+
+.question{
+    text-align: center;
+}

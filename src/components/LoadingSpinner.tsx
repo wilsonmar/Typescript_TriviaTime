@@ -7,7 +7,7 @@ const LoadingSpinner = () => {
 
   return(
     <div className={classes.loader}>
-      <Loader type='ThreeDots' color='#954bb4' height={150} width={150} />
+      <Loader type='ThreeDots' color='rgb(130, 187, 44)' height={150} width={150} />
     </div>
   )
 }

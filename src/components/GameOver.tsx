@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from './Header'
 
 type Props = {
   score: number
@@ -6,8 +7,7 @@ type Props = {
 
 const GameOver: React.FC<Props> = ({ score }) => (
   <>
-    <div className='title'>TRIVIA TIME</div>
-    <img src={require("../assets/brain.png")} alt="" />
+    <Header />
     <p className='score'>Score: {score} try again?</p>
   </>
 )

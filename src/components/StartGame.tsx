@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { triviaTopic, triviaLevel } from '../utils'
+import Header from './Header'
 
 type Props = {
   callback: (difficulty: string, tropic: string) => void
@@ -22,8 +23,7 @@ const StartGame: React.FC<Props> = ({ callback }) => {
 
   return (
     <>
-      <div className='title'>TRIVIA TIME</div>
-      <img src={require("../assets/brain.png")} alt="" />
+      <Header/>
       <div className='app'>
         <div className='select'>
           <select value={difficulty} onChange={handleDifficulty}>

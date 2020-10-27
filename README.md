@@ -4,14 +4,14 @@ Trivia Time is a trivia app using the Trivia DB API. Test your knowledge with di
 
 <b>Frontend:</b> JS, TypeScript, React, API, Material-ui, CSS<br/>
 
-#### Start Screen
+### Start Screen
 Select difficulty and trivia topic then press start!<br/><br/>
-<img src="https://i.ibb.co/3Wpn78h/Setting-Screen.jpg" alt="Setting-Screen" border="0" width="400px">
+<img src="https://i.ibb.co/3Wpn78h/Setting-Screen.jpg" alt="Setting-Screen" border="0" width="300px">
 
-#### Loading
+### Loading
 Loading while fetching data<br/><br/>
-<img src="https://i.ibb.co/5cQSJyr/loading.jpg" alt="loading" border="0" width="400px">
+<img src="https://i.ibb.co/5cQSJyr/loading.jpg" alt="loading" border="0" width="300px">
 
-#### Question Page
+### Question Page
 Containers question, score, answer options, and question number wheel<br/><br/>
-<img src="https://i.ibb.co/zFP7sdd/questions.jpg" alt="questions" border="0" width="400px">
+<img src="https://i.ibb.co/zFP7sdd/questions.jpg" alt="questions" border="0" width="300px">

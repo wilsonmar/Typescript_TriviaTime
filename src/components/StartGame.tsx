@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 import { triviaTopic, triviaLevel } from '../utils'
-import { NativeSelect, InputLabel, FormControl, Button } from '@material-ui/core';
-import { useStyles } from './styles/selectStyle'
-import brain from '../assets/brain.png'
 
 type Props = {
   callback: (difficulty: string, tropic: string) => void
 }
 
 const StartGame: React.FC<Props> = ({ callback }) => {
-  const classes = useStyles()
 
   const [difficulty, setDifficulty] = useState<string>('easy')
   const [topic, setTopic] = useState<string>('')
@@ -26,27 +22,29 @@ const StartGame: React.FC<Props> = ({ callback }) => {
 
   return (
     <>
+      <div className='title'>TRIVIA TIME</div>
       <img src={require("../assets/brain.png")} alt="" />
       <div className='app'>
-        <FormControl className={classes.formControl}>
-          <InputLabel shrink >Difficulty</InputLabel>
-          <NativeSelect value={difficulty} onChange={handleDifficulty}>
+        <div className='select'>
+          <select value={difficulty} onChange={handleDifficulty}>
             {triviaLevel.map(level => (
               <option key={level.id} value={level.id}>{level.name}</option>
             ))}
-          </NativeSelect>
-        </FormControl>
+          </select>
+        </div>
         <br />
-        <FormControl className={classes.formControl}>
-          <InputLabel shrink >Topic</InputLabel>
-          <NativeSelect value={topic} onChange={handleTopic}>
+        <div className='select'>
+          <select value={topic} onChange={handleTopic}>
             {triviaTopic.map(topic => (
               <option key={topic.id} value={topic.id}>{topic.name}</option>
             ))}
-          </NativeSelect>
-        </FormControl>
+          </select>
+        </div>
+
         <br />
-        <button className='start' onClick={startTrivia}>Start</button>
+        <div className='btn-container'>
+          <button className='start' onClick={startTrivia}>Start</button>
+        </div>
       </div>
     </>
   )

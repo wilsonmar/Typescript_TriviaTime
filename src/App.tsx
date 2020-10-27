@@ -3,8 +3,9 @@ import { fetchQuizQuestions, QuestionState } from './API'
 import QuestionCard from './components/QuestionCard'
 import LoadingSpinner from './components/LoadingSpinner'
 import StartGame from './components/StartGame'
-import GameOver from './components/GameOver'
 import "./App.css"
+import GameOver from './components/GameOver'
+import Progress from './components/Progress'
 
 const TOTAL_QUESTIONS = 10
 
@@ -53,7 +54,6 @@ const App = () => {
         correct,
         correctAnswer: questionNum.correct_answer
       }
-      console.log(userAnswers)
       setUserAnswers(prev => [...prev, AnswerObject])
 
       if (correct) {
@@ -64,7 +64,6 @@ const App = () => {
 
   const loadNextQuestion = () => {
     const nextQuestion = number + 1
-
     if (nextQuestion === TOTAL_QUESTIONS) setGameOver(true)
     else { setNumber(nextQuestion) }
   }
@@ -73,38 +72,45 @@ const App = () => {
 
   return (
     <div className="container">
-      <div className='title'>TRIVIA FUN</div>
       {loading && <LoadingSpinner />}
       {initialize && <StartGame callback={startTrivia} />}
       {gameOver && !initialize &&
         <>
           <GameOver score={score} />
-          <button onClick={restartGame}>Restart?</button>
+          <div className='btn-container'>
+            <button className='start' onClick={restartGame}>Restart?</button>
+          </div>
+          <Progress number={number} />
         </>
       }
       {
         !loading && !gameOver && !initialize
-        && <p className='score'>Score: {score}</p>
-        && <QuestionCard
-          questionNum={number + 1}
-          totalQuestions={TOTAL_QUESTIONS}
-          question={questionNum.question}
-          answers={questionNum.answers}
-          userAnswer={userAnswers ? userAnswers[number] : undefined}
-          callback={checkAnswer}
-        />
+        && <>
+          <QuestionCard
+            questionNum={number + 1}
+            totalQuestions={TOTAL_QUESTIONS}
+            question={questionNum.question}
+            answers={questionNum.answers}
+            userAnswer={userAnswers ? userAnswers[number] : undefined}
+            callback={checkAnswer}
+            score={score}
+          />
+          <Progress number={number} />
+        </>
       }
       {
         !gameOver &&
         !loading &&
         userAnswers.length === number + 1 &&
-        < button className='start' onClick={loadNextQuestion}>
-          {number !== TOTAL_QUESTIONS - 1 ?
-            `Next Question` :
-            `Finish`}
-        </button>
+        <div className='mid-btn'>
+          < button className='start' onClick={loadNextQuestion}>
+            {number !== TOTAL_QUESTIONS - 1 ?
+              `Next` :
+              `Finish!`}
+          </button>
+        </div>
       }
-    </div>
+    </div >
   )
 }
 

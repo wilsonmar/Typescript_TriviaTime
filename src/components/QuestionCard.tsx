@@ -1,6 +1,5 @@
 import React from 'react'
 import { AnswerObject } from '../App'
-import Button from '@material-ui/core/Button'
 
 type Props = {
     question: string
@@ -9,34 +8,31 @@ type Props = {
     userAnswer: AnswerObject | undefined
     questionNum: number
     totalQuestions: number
+    score: number
 }
 
-const QuestionCard: React.FC<Props> = ({ question, answers, callback, userAnswer, questionNum, totalQuestions }) => (
-    <div className='question'>
-        <p className='number'>
-            Question: {questionNum}/{totalQuestions}
-        </p>
-        <p dangerouslySetInnerHTML={{ __html: question }} />
-        <div>
+const QuestionCard: React.FC<Props> = ({ question, answers, callback, userAnswer, questionNum, totalQuestions, score }) => (
+    <>
+        <div className="question-container">
+            <p dangerouslySetInnerHTML={{ __html: question }} />
+            <div className='score'>
+            <p>Score: {score}</p>
+            </div>
+        </div>
+        <div className='answers'>
             {answers.map(answer => (
                 <div key={answer}>
-                    <Button
-                        variant="contained"
+                    <button className='option-btn'
                         disabled={!!userAnswer}
                         value={answer}
                         onClick={callback}
-                        style={{
-                            textTransform: 'none',
-                            width: '90%',
-                            margin: '5px'
-                        }}
                     >
                         <span dangerouslySetInnerHTML={{ __html: answer }} />
-                    </Button>
+                    </button>
                 </div>
             ))}
         </div>
-    </div>
+    </>
 )
 
 

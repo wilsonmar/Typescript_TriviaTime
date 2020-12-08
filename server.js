@@ -1,18 +1,20 @@
-'use strict'
-
-const path = require('path')
-const express = require('express')
-const http = require('http')
-const bodyParser = require('body-parser')
-
+const express = require("express")
 const app = express()
-const server = http.Server(app)
+const bodyParser = require("body-parser")
+require("dotenv").config()
 
-const port = process.env.PORT || 3338
-
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use('/', express.static(path.join(__dirname, 'html')))
 
-server.listen(port, () => {
-  console.log(`Listening on http://localhost:${port}/`)
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Headers", "*")
+    res.header('Access-Control-Allow-Credentials', true)
+    res.header("Access-Control-Allow-Origin", req.headers.origin)
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,UPDATE,OPTIONS")
+    next()
+})
+
+const { PORT } = process.env
+const server = app.listen(PORT, () => {
+    console.log(`Server is up on port ${PORT}`)
 })

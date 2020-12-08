@@ -15,6 +15,6 @@ app.use(function (req, res, next) {
 })
 
 const { PORT } = process.env
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server is up on port ${PORT}`)
 })

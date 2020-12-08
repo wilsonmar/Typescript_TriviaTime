@@ -1,7 +1,18 @@
-app.listen(process.env.PORT)
+'use strict'
 
-let port = process.env.PORT
-if (port == null || port == "") {
-  port = 8000
-}
-app.listen(port)
+const path = require('path')
+const express = require('express')
+const http = require('http')
+const bodyParser = require('body-parser')
+
+const app = express()
+const server = http.Server(app)
+
+const port = process.env.PORT || 3338
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use('/', express.static(path.join(__dirname, 'html')))
+
+server.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}/`)
+})

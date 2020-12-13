@@ -1,7 +1,8 @@
 # [Trivia Time](https://triviatime.netlify.app/)
 
-Deployed with netlify:[Trivia Time](https://triviatime.netlify.app/)<br/>
+
 Trivia Time is a trivia app using the Trivia DB API. Test your knowledge with different difficulties and various topics<br/>
+Deployed with netlify: [Trivia Time](https://triviatime.netlify.app/)<br/><br/>
 
 <b>Frontend:</b> JS, TypeScript, React, API, Material-ui, CSS<br/>
 

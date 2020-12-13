@@ -4,7 +4,7 @@
 Trivia Time is a trivia app using the Trivia DB API. Test your knowledge with different difficulties and various topics<br/>
 Deployed with netlify: [Trivia Time](https://triviatime.netlify.app/)<br/>
 
-<b>Frontend:</b> JS, TypeScript, React, API, Material-ui, CSS<br/>
+<b>Frontend:</b> TypeScript, React, API, Material-ui, CSS<br/>
 
 ### Start Screen
 Select difficulty and trivia topic then press start!<br/><br/>

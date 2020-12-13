@@ -1,4 +1,4 @@
-### Trivia Time!
+# [Trivia Time](https://triviatime.netlify.app/)
 
 Trivia Time is a trivia app using the Trivia DB API. Test your knowledge with different difficulties and various topics<br/>
 
